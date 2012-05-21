@@ -1,0 +1,29 @@
+<html><head><title></title>
+<link rel="stylesheet" type="text/css" href="manstyle.css"/>
+</head>
+<body>
+
+<script>
+S4 = function() {
+  return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+}
+
+guid = function() {
+  return S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4();
+}
+
+window.onload = function() {
+  field = document.getElementById('theid');
+  field.value = guid();
+}
+</script>
+
+<form action="/login"  method="post">
+<span class="field1">user:</span> <input type="text" name="user"/> <br/>
+<span class="field1">password:</span> <input type="password" name="pass" /> 
+<br/>
+<input type="hidden" name="id" id ="theid"/>
+<input type="submit" value="Login"/>
+</form>
+</body>
+</html>

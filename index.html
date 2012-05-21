@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Site Manager
+</title>
+<link rel="stylesheet" type="text/css" href="manstyle.css"/>
+</head>
+<body>
+<h1>Site Manager</h1>
+
+<input id="site" type="text" placeholder="domain, e.g. mysite.thisserver.com"/>
+<input id="port" type="text" placeholder="internal port, e.g. 3001"/> 
+
+(Optional) run an install script:
+<select id="installscript">
+  <option selected value="none">None</option>
+</select>
+<button class="black">Add New Site</button>
+<hr/>
+
+<ul id="sites">
+</ul>
+
+<script src="man.js"></script>
+</body>
+</html>

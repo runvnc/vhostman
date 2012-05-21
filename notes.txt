@@ -1,0 +1,18 @@
+Enter a hostname
+Enter a destination hostname and port
+
+For service to work
+
+Need a pool of servers
+
+When you add a site, need to select the server
+with the least load, or any server which isn't full
+add a site to it
+
+Store resource servers in MongoDB
+
+Each source server is associated with an account
+
+So there is an interface using dnode
+
+

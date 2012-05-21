@@ -1,0 +1,2 @@
+{ "cat.oic.io" : [ "localhost", 3000 ],
+  "manager.oic.io" : [ "localhost", 3200 ] }
