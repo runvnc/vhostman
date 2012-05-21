@@ -1,5 +1,5 @@
 (function() {
-  var createCookie, login;
+  var createCookie;
 
   createCookie = function(name, value, days) {
     var date, expires;
@@ -13,22 +13,21 @@
     return document.cookie = name + "=" + value + expires + "; path=/";
   };
 
-  login = function() {};
-
   $(function() {
-    $.get('sites', function(sites) {
-      var port, site, str, _i, _len;
+    return $.get('sites', function(sites) {
+      var portnum, site, str, val;
+      console.log(sites);
       str = '';
-      port = 3030;
-      for (_i = 0, _len = sites.length; _i < _len; _i++) {
-        site = sites[_i];
-        str += "<li>" + site.name + " : " + site.port + "</li>";
-        port = Math.max(site.port, port);
+      portnum = 3030;
+      for (site in sites) {
+        val = sites[site];
+        str += "<li><button class=\"button black\">Remove</button><span class=\"site\">" + site + "</span> <span class=\"port\"> " + val[1] + "</port></li>";
+        portnum = Math.max(val[1], portnum);
       }
       $('#sites').html(str);
-      return port++;
+      portnum++;
+      return $('#port').val(portnum);
     });
-    return $('#port').val(port);
   });
 
 }).call(this);

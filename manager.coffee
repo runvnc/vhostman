@@ -46,7 +46,7 @@ app.get "/", (req, res) ->
       'Content-Type': 'text/html'
     res.end 'Security check failed. Please <a href="/showlogin">login</a>'
   sessionid = getCookie req, 'sessionid'
-  if sessionid
+  if sessionid? and session[sessionid]
     res.end fs.readFileSync 'index.html'
   else
     res.writeHead 200,
@@ -65,12 +65,19 @@ app.post "/login", (req, res) ->
 app.get "/showlogin", (req, res) ->
   res.end fs.readFileSync 'showlogin.html'
 
+app.get "/man.js", (req, res) ->
+  res.end fs.readFileSync 'man.js'
+
 app.get "/manstyle.css", (req, res) ->
   res.end fs.readFileSync 'manstyle.css'
 
 app.get "/sites", (req, res) ->
-  if checkSecurity req
-        
+  sessionid = getCookie req, 'sessionid'
+  if sessionid? and session[sessionid]
+    sites = datafiles.getData 'subs', {}
+    res.writeHead 200,
+      'Content-Type': 'application/json'
+    res.end JSON.stringify(sites)
   else
     res.end 'Security check failed'
 

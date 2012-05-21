@@ -7,8 +7,9 @@ Site Manager
 <link rel="stylesheet" type="text/css" href="manstyle.css"/>
 </head>
 <body>
-<h1>Site Manager</h1>
 
+<form class="newsite">
+<h1>Site Manager</h1>
 <input id="site" type="text" placeholder="domain, e.g. mysite.thisserver.com"/>
 <input id="port" type="text" placeholder="internal port, e.g. 3001"/> 
 
@@ -16,12 +17,16 @@ Site Manager
 <select id="installscript">
   <option selected value="none">None</option>
 </select>
-<button class="black">Add New Site</button>
-<hr/>
+<button id="addnew" class="button black">Add New Site</button>
+</form>
+
+
 
 <ul id="sites">
 </ul>
 
-<script src="man.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/man.js"></script>
+
 </body>
 </html>

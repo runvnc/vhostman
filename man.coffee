@@ -11,19 +11,19 @@ createCookie = (name, value, days) ->
   document.cookie = name + "=" + value + expires + "; path=/"
 
 
-login = ->
+#login = ->
 
 $ ->
   $.get 'sites', (sites) ->
+    console.log sites
     str = ''
-    port = 3030
-    for site in sites
-      str += "<li>#{site.name} : #{site.port}</li>"
-      port = Math.max site.port, port
+    portnum = 3030
+    for site, val of sites
+      str += "<li><button class=\"button black\">Remove</button><span class=\"site\">#{site}</span> <span class=\"port\"> #{val[1]}</port></li>"
+      portnum = Math.max val[1], portnum
     $('#sites').html str
-    port++
-
-  $('#port').val port
+    portnum++
+    $('#port').val portnum
 
 
 

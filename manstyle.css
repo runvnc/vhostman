@@ -1,10 +1,57 @@
 body {
   margin: 25px;
+  background-color: #ececec;
 }
 
 body, p, td, span, li, h1, h2, dd, dl, div, article, section, button {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12pt;
+}
+
+.site {
+  width: 200px;
+  display: inline-block;
+}
+
+.port {
+  width: 75px;
+  display: inline-block;
+}
+
+form {
+-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 10px;
+  width: 350px;
+  background-color: #fff;
+  padding: 20px;
+}
+
+form.newsite {
+  width: 800px;
+}
+
+ul {
+-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 10px;
+  padding: 20px;
+  width: 800px;
+  background-color: #fff;
+}
+
+li {
+  list-style-type: none;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #ccc;
+  width: 800px;
+  background-color: #fff;
+}
+
+li .button {
+  margin-right: 30px;
 }
 
 .field1 {
@@ -14,7 +61,7 @@ body, p, td, span, li, h1, h2, dd, dl, div, article, section, button {
 
 
 /* http://webdesignerwall.com/tutorials/css3-gradient-buttons */
-button {
+.button {
   display: inline-block;
   zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
   *display: inline;
@@ -37,12 +84,12 @@ button {
   margin-bottom: 10px;
 }
 
-button:hover {
+.button:hover {
   text-decoration: none;
 }
 
 
-button:active {
+.button:active {
   position: relative;
   top: 1px;
 }
