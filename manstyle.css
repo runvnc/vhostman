@@ -19,6 +19,9 @@ body, p, td, span, li, h1, h2, dd, dl, div, article, section, button {
 }
 
 form {
+-webkit-box-shadow: 4px 4px 5px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    4px 4px 5px rgba(50, 50, 50, 0.75);
+box-shadow:         4px 4px 5px rgba(50, 50, 50, 0.75);
 -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
@@ -26,6 +29,7 @@ form {
   width: 350px;
   background-color: #fff;
   padding: 20px;
+  border: 1px solid #bbb;
 }
 
 form.newsite {
@@ -33,6 +37,9 @@ form.newsite {
 }
 
 ul {
+-webkit-box-shadow: 4px 4px 5px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    4px 4px 5px rgba(50, 50, 50, 0.75);
+box-shadow:         4px 4px 5px rgba(50, 50, 50, 0.75);
 -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     -khtml-border-radius: 10px;
@@ -46,8 +53,10 @@ li {
   list-style-type: none;
   margin-bottom: 5px;
   border-bottom: 1px solid #ccc;
-  width: 800px;
+  width: 785px;
   background-color: #fff;
+  border: 1px solid #bbb;
+  padding-left: 15px;
 }
 
 li .button {
