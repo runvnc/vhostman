@@ -1,5 +1,5 @@
 (function() {
-  var createCookie;
+  var createCookie, refreshsites;
 
   createCookie = function(name, value, days) {
     var date, expires;
@@ -13,7 +13,7 @@
     return document.cookie = name + "=" + value + expires + "; path=/";
   };
 
-  $(function() {
+  refreshsites = function() {
     return $.get('sites', function(sites) {
       var portnum, site, str, val;
       console.log(sites);
@@ -21,13 +21,43 @@
       portnum = 3030;
       for (site in sites) {
         val = sites[site];
-        str += "<li><button class=\"button black\">Remove</button><span class=\"site\">" + site + "</span> <span class=\"port\"> " + val[1] + "</port></li>";
+        str += "<li><button class=\"button black\">Remove</button><span class=\"site\">" + site + "</span><input type=\"text\" name=\"custom\" class=\"custom\" placeholder=\"domain(s), e.g. mysite1.com, other1.com\" value=\"" + val.domains + "\"/><button class=\"button black saveit\">Save</button></li>";
         portnum = Math.max(val[1], portnum);
       }
       $('#sites').html(str);
       portnum++;
-      return $('#port').val(portnum);
+      $('#port').val(portnum);
+      $('.saveit').off('click');
+      return $('.saveit').on('click', function() {
+        var domains;
+        site = $(this).parent().find('.site').text();
+        domains = $(this).parent().find('.custom').val();
+        return $.post('/updatesite', {
+          site: site,
+          domains: domains
+        }, function(res) {
+          return refreshsites();
+        });
+      });
     });
+  };
+
+  $(function() {
+    $.get('config', function(config) {
+      window.config = config;
+      $('#domain').text(config.domain);
+      return $('#addnew').click(function() {
+        var obj;
+        obj = {
+          site: $('#site').val() + '.' + config.domain,
+          port: $('#port').val()
+        };
+        return $.post('/addsite', obj, function(res) {
+          return window.location.reload();
+        });
+      });
+    });
+    return refreshsites();
   });
 
 }).call(this);

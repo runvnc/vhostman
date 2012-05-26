@@ -1,5 +1,5 @@
 body {
-  margin: 25px;
+    margin: 25px;
   background-color: #ececec;
 }
 
@@ -8,8 +8,22 @@ body, p, td, span, li, h1, h2, dd, dl, div, article, section, button {
   font-size: 12pt;
 }
 
+.custom {
+  width: 250px;
+  margin-right: 10px;
+}
+
+#addnew {
+  margin-left: 50px;
+}
+
+#site {
+  width: 100px;
+  
+}
+
 .site {
-  width: 200px;
+  width: 250px;
   display: inline-block;
 }
 
@@ -125,9 +139,6 @@ li .button {
 }
 
 
-#site {
-  width: 250px;
-}
 
 #port {
   width: 175px;

@@ -1,2 +1,1 @@
-{ "cat.oic.io" : [ "localhost", 3000 ],
-  "manager.oic.io" : [ "localhost", 3200 ] }
+{"nubber.oic.io":{"port":"3031","domains":"nubbers.com, slim.io"}}

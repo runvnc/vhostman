@@ -3,6 +3,8 @@ datafiles = require './datafiles'
 util = require 'util'
 passwordHash = require 'password-hash'
 fs = require 'fs'
+config = require './config'
+
 
 app = express.createServer()
 app.use express.cookieParser()
@@ -12,8 +14,12 @@ app.use express.static(__dirname + '/public')
 
 session = {}
 
+#hostname = 
+
 getCookie = (req, name) ->
   nameEQ = name + "="
+  if not req.headers.cookie? then return null
+
   ca = req.headers.cookie.split(";")
   i = 0
   while i < ca.length
@@ -45,13 +51,14 @@ app.get "/", (req, res) ->
     res.writeHead 200,
       'Content-Type': 'text/html'
     res.end 'Security check failed. Please <a href="/showlogin">login</a>'
-  sessionid = getCookie req, 'sessionid'
-  if sessionid? and session[sessionid]
-    res.end fs.readFileSync 'index.html'
   else
-    res.writeHead 200,
-      'Content-Type': 'text/html'
-    res.end 'Security check failed. Please <a href="/showlogin">login</a>'
+    sessionid = getCookie req, 'sessionid'
+    if sessionid? and session[sessionid]
+      res.end fs.readFileSync 'index.html'
+    else
+      res.writeHead 200,
+        'Content-Type': 'text/html'
+      res.end 'Security check failed. Please <a href="/showlogin">login</a>'
 
 
 app.post "/login", (req, res) ->
@@ -61,6 +68,7 @@ app.post "/login", (req, res) ->
     res.redirect '/'
   else
     res.end 'Security check failed.  Go back to try again.'
+
   
 app.get "/showlogin", (req, res) ->
   res.end fs.readFileSync 'showlogin.html'
@@ -80,6 +88,54 @@ app.get "/sites", (req, res) ->
     res.end JSON.stringify(sites)
   else
     res.end 'Security check failed'
+
+app.post "/addsite", (req, res) ->
+  sessionid = getCookie req, 'sessionid'
+  if sessionid? and session[sessionid]
+    sites = datafiles.getData 'subs', {}
+    console.log 'body is'
+    console.log req.body
+    sites[req.body.site] =
+      port:  req.body.port
+      domains: ''
+    console.log 'saving'
+    console.log sites
+    datafiles.setData 'subs', sites
+    res.end 'ok'
+  else
+    console.log 'security failed on addsite'
+    res.end 'Security check failed'
+
+
+app.post "/updatesite", (req, res) ->
+  sessionid = getCookie req, 'sessionid'
+  if sessionid? and session[sessionid]
+    sites = datafiles.getData 'subs', {}
+    console.log req
+    toupdate = sites[req.body.site]
+    toupdate.domains = req.body.domains
+    console.log 'toupdate is now'
+    console.log toupdate
+    sites[req.body.site] = toupdate
+    console.log 'sites is now'
+    console.log sites
+    datafiles.setData 'subs', sites
+    res.end 'ok'
+  else
+    res.end 'Security check failed'
+
+
+
+app.get "/config", (req, res) ->
+  sessionid = getCookie req, 'sessionid'
+  if sessionid? and session[sessionid]
+    res.writeHead 200,
+      'Content-Type': 'application/json'
+    res.end JSON.stringify(config)
+  else
+    res.end 'Security check failed'
+
+
 
 
 app.listen 3200
