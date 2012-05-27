@@ -5,13 +5,13 @@ E_BADARGS=65
 
 if [ $# -ne $EXPECTED_ARGS ]
 then
-  echo "Usage: oic host port` {arg}"
+  echo "Usage: oic {host} {port}"
   exit $E_BADARGS
 fi
 
 git clone git://github.com/ithkuil/cureblog.git sites/$2_$1
-echo $2 > myport
 cd sites/$2_$1
+echo $2 > myport
 npm install
 nohup ./run &
 

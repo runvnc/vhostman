@@ -40,6 +40,8 @@ setup = ->
   httpbouncer = makebouncer 80
   if httpsbouncer? then httpsbouncer.close()
   httpsbouncer = makebouncer 443
+  fs.watch 'data/subs', (ev) ->
+    setup()
 
 
 setup()

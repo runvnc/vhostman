@@ -4,6 +4,7 @@ util = require 'util'
 passwordHash = require 'password-hash'
 fs = require 'fs'
 config = require './config'
+child = require 'child_process'
 
 
 app = express.createServer()
@@ -93,17 +94,14 @@ app.post "/addsite", (req, res) ->
   sessionid = getCookie req, 'sessionid'
   if sessionid? and session[sessionid]
     sites = datafiles.getData 'subs', {}
-    console.log 'body is'
-    console.log req.body
     sites[req.body.site] =
       port:  req.body.port
       domains: ''
-    console.log 'saving'
-    console.log sites
+    child.exec "installscripts/oic #{req.body.site} #{req.body.port}"
     datafiles.setData 'subs', sites
+    
     res.end 'ok'
   else
-    console.log 'security failed on addsite'
     res.end 'Security check failed'
 
 
