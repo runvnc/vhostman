@@ -20,9 +20,9 @@ getlist = (str) ->
 
 
 findbyport = (port) ->
-  for site, val of sites
+  for sitename, site of sites
     if site.port is port
-      return site
+      return sitename
   return undefined
 
 
@@ -30,14 +30,17 @@ checkrunning = (port) ->
   opts =
     url: "http://localhost:#{port}"
     timeout: 2500
+  console.log "request to port " + port
   request opts, (er, res, body) ->
     if body? and body.length > 5
       console.log "ok response from " + port
       #ok
     else
+      console.log "request unsuccessful.finding site name for port " + port
       site = findbyport port
       if site?
-        child.exec "sites/#{port}_#{site}/restart"
+        console.log "found site running sites/#{port}_#{site}/restart"
+        child.exec "cd sites/#{port}_#{site}; ./restart"
       else
         console.log "didnt find site " + site
 

@@ -21,7 +21,7 @@
       portnum = 3030;
       for (site in sites) {
         val = sites[site];
-        sitelink = "<a href=\"http://" + site + "\">" + site + "</a>";
+        sitelink = "<a href=\"http://" + site + "\" target=\"_blank\">" + site + "</a>";
         str += "<li><button class=\"button black\">Remove</button><span class=\"site\">" + sitelink + "</span><input type=\"text\" name=\"custom\" class=\"custom\" placeholder=\"domain(s), e.g. mysite1.com, other1.com\" value=\"" + val.domains + "\"/><button class=\"button black saveit\">Save</button></li>";
         portnum = Math.max(val.port, portnum);
       }
