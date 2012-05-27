@@ -1,6 +1,8 @@
 datafiles = require './datafiles'
 bouncy = require 'bouncy'
+fs = require 'fs'
 
+sites = {}
 
 httpbouncer = null
 httpsbouncer = null
