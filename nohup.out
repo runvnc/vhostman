@@ -135,3 +135,90 @@ site undefined not found
 [ 'localhost', 3200 ]
 [ 'localhost', 3200 ]
 [ 'localhost', 3200 ]
+site 50.57.168.55 not found
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+site bob.oic.io not found
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+[ 'localhost', 3200 ]
+site house.oic.io not found
+fname is data/subs
+
+/home/cure/app/app.coffee:31
+      if (sites.hasOwnProperty(req.headers.host)) {
+          ^
+ReferenceError: sites is not defined
+    at /home/cure/app/app.coffee:31:11
+    at IncomingMessage.onHeaders (/home/cure/app/node_modules/bouncy/index.js:55:13)
+    at IncomingMessage.emit (events.js:67:17)
+    at Parser.<anonymous> (/home/cure/app/node_modules/bouncy/node_modules/parsley/lib/modes.js:135:21)
+    at Parser.execute (/home/cure/app/node_modules/bouncy/node_modules/parsley/index.js:20:35)
+    at Socket.<anonymous> (/home/cure/app/node_modules/bouncy/node_modules/parsley/index.js:11:14)
+    at Socket.emit (events.js:67:17)
+    at TCP.onread (net.js:367:14)
+fname is data/user
+fname is data/subs
+fname is data/subs
+fname is data/subs
+fname is data/subs
+fname is data/subs
+fname is data/subs
+fname is data/subs
+
+node.js:201
+        throw e; // process.nextTick error, or 'error' event on first tick
+              ^
+Error: listen EACCES
+    at errnoException (net.js:670:11)
+    at Array.0 (net.js:756:28)
+    at EventEmitter._tickCallback (node.js:192:40)
+fname is data/subs
+fname is data/subs
